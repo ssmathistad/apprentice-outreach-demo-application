@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    container_name: backend-demo-app 
+    container_name: backend-demo-app
     build: ./backend
     volumes:
       - ./backend:/code
@@ -13,3 +13,12 @@ services:
     command: >
       sh -c "python /code/django_backend/manage.py migrate &&
              python /code/django_backend/manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    container_name: react
+    build: ./frontend
+    volumes:
+      - ./frontend:/usr/src/app/
+    ports:
+      - '3000:3000'
+    command: [ "npm", "start" ]
