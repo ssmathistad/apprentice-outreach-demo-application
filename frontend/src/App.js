@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>DevOps Challenge!</h1>
-      </header>
-    </div>
-  );
+import { Provider, connect } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+
+import dummyApp from "./reducers";
+
+import Greeting from './components/Greeting';
+
+let store = createStore(dummyApp, applyMiddleware(thunk));
+
+class RootContainerComponent extends Component {
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Greeting />
+        </header>
+      </div>
+    );
+  }
 }
 
-export default App;
+let RootContainer = (RootContainerComponent);
+
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <RootContainer />
+      </Provider>
+    )
+  }
+}
