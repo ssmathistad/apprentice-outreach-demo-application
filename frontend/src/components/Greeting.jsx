@@ -10,10 +10,14 @@ class Greeting extends Component {
 
   retrieveSecret = (e) => {
     e.preventDefault();
-    this.props.getSecret();
-    let newSecret = this.props.secrets[0]
+    var that = this;
+    this.props.getSecret()
+    .then(function(x)
+    {
+    let newSecret = x.secrets[0].title;
     console.log(newSecret)
-    this.setState({secret: newSecret})
+    that.setState({secret: newSecret})
+    });
     // this.setState();
   }
 
@@ -32,7 +36,7 @@ class Greeting extends Component {
             </form>
           </div>
         </div>
-        <p>{this.state.secrets[0].title}</p>
+        <p>{this.state.secret}</p>
       </div>
       </>
     )
