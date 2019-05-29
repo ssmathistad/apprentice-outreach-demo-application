@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    container_name: backend-demo-app 
+    build: ./backend
+    volumes:
+      - ./backend:/code
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+
+    command: >
+      sh -c "python /code/django_backend/manage.py migrate &&
+             python /code/django_backend/manage.py runserver 0.0.0.0:8000"
