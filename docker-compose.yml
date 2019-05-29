@@ -9,7 +9,6 @@ services:
       - "8000"
     ports:
       - "8000:8000"
-
     command: >
       sh -c "python /code/django_backend/manage.py migrate &&
              python /code/django_backend/manage.py runserver 0.0.0.0:8000"
@@ -21,4 +20,5 @@ services:
       - ./frontend:/usr/src/app/
     ports:
       - '3000:3000'
-    command: [ "npm", "start" ]
+    command: >
+      sh -c "npm install --silent && npm start"
