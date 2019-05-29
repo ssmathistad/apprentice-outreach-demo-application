@@ -6,4 +6,4 @@ from .models import Secret
 class SecretSerializer(serializers.ModelSerializer):
     class Meta:
         model = Secret
-        fields = ('id')
+        fields = "__all__"

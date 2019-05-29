@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions, generics
 from rest_framework.response import Response
 
+from .models import Secret
 from .serializers import (SecretSerializer)
 
 """
@@ -12,4 +13,4 @@ class SecretViewSet(viewsets.ModelViewSet):
 
     # On GET, return all user's podcasts
     def get_queryset(self):
-        return self.request.secrets.all()
+        return Secret.objects.all()
