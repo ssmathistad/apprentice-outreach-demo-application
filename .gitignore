@@ -1,2 +1,4 @@
-backend/django_backend/django_backend/__pycache__/
-backend/django_backend/db.sqlite3
+__pycache__/
+db.sqlite3
+
+*.py[cod]
