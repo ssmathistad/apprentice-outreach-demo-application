@@ -13,3 +13,12 @@ services:
     command: >
       sh -c "python /code/django_backend/manage.py migrate &&
              python /code/django_backend/manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    container_name: frontend-demo-app
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+    ports:
+      - "3000:3000"
+    command: npm start
