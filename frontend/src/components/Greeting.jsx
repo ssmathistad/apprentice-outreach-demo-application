@@ -15,7 +15,7 @@ class Greeting extends Component {
     this.props.getSecret(this.state.secretText)
     .then(function(x)
     {
-    let newSecret = x.secrets[0].title;
+    let newSecret = x.secrets.secret;
     console.log(newSecret)
     that.setState({secret: newSecret })
     });
