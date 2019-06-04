@@ -13,12 +13,11 @@ services:
       sh -c "python /code/django_backend/manage.py migrate &&
              python /code/django_backend/manage.py runserver 0.0.0.0:8000"
 
-  # frontend:
-  #   container_name: react
-  #   build: ./frontend
-  #   volumes:
-  #     - ./frontend/:/usr/src/app/
-  #   ports:
-  #     - '3000:3000'
-  #   command: >
-  #     sh -c "npm install --silent && npm start"
+  frontend:
+    container_name: frontend-demo-app
+    build: ./frontend
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+    ports:
+      - "3000:3000"
+    command: npm start
