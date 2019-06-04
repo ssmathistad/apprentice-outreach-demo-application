@@ -1,8 +1,8 @@
-export const fetchSecret = () => {
+export const fetchSecret = (secretText) => {
   return (dispatch, getState) => {
     let headers = {"Content-Type": "application/json"};
-
-    return fetch("http://localhost:8000/api/secret/", {headers, })
+    console.log(secretText);
+    return fetch("http://backend-demo-app:8000/?input=" + secretText, {headers, })
       .then(res => {
         if (res.status < 500) {
           return res.json().then(data => {

@@ -5,20 +5,20 @@ import {secrets} from "../actions";
 
 class Greeting extends Component {
   state = {
-    secret: ""
+    secret: "",
+    secretText: ""
   }
 
   retrieveSecret = (e) => {
     e.preventDefault();
     var that = this;
-    this.props.getSecret()
+    this.props.getSecret(this.state.secretText)
     .then(function(x)
     {
     let newSecret = x.secrets[0].title;
     console.log(newSecret)
-    that.setState({secret: newSecret})
+    that.setState({secret: newSecret })
     });
-    // this.setState();
   }
 
   render() {
@@ -27,11 +27,16 @@ class Greeting extends Component {
       <div class="text-center">
         <div class="card bg-dark">
           <div class="card-header">
-            <strong>Welcome to the Dummy Project!</strong>
+            <strong>Hey there Project!</strong>
           </div>
           <div class="card-body">
             <p class="card-text">Click the button to reveal the secret</p>
             <form onSubmit={this.retrieveSecret}>
+              <input 
+                type="text" 
+                value={this.state.secretText} 
+                onChange={(e) => this.setState({ secretText: e.target.value }) } 
+              />
               <input type="submit"/>
             </form>
           </div>
@@ -51,8 +56,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getSecret: () => {
-      return dispatch(secrets.fetchSecret());
+    getSecret: (secretText) => {
+      return dispatch(secrets.fetchSecret(secretText));
     },
   }
 }
