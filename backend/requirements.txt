@@ -3,3 +3,4 @@ django-allauth
 pylint
 pylint-django
 djangorestframework
+django-cors-headers==2.5.2
