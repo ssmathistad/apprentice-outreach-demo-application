@@ -34,11 +34,11 @@ class Greeting extends Component {
                 value={this.state.input}
                 onChange={(e) => this.setState({ input: e.target.value }) }
               />
-              <input type="submit"/>
+              <input id="submitBtn" type="submit"/>
             </form>
           </div>
         </div>
-        <p>{this.state.secret}</p>
+        <p id="decryptedResult">{this.state.secret}</p>
       </div>
       </>
     )
