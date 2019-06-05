@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 
+import {retrieveSecret} from '../util/secretRetriever';
+
 class Greeting extends Component {
   state = {
     secret: "",
     input: ""
   }
 
-  retrieveSecret = (e) => {
+  setSecret = (e) => {
     e.preventDefault();
-    let headers = {"Content-Type": "application/json"};
-    let response = fetch("http://localhost:8000/?input=" + e, {headers, });
-    response.then(res => res.json())
+    retrieveSecret(this.state.input)
       .then(data =>
         this.setState({
           secret: data.secret
         })
-      )
+      );
   }
 
   render() {
@@ -28,7 +28,7 @@ class Greeting extends Component {
           </div>
           <div className="card-body">
             <p className="card-text">Click the button to reveal the secret</p>
-            <form onSubmit={this.retrieveSecret}>
+            <form onSubmit={this.setSecret}>
               <input
                 type="text"
                 value={this.state.input}
