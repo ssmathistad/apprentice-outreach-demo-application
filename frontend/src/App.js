@@ -5,13 +5,11 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import dummyApp from "./reducers";
 
 import Greeting from './components/Greeting';
 
-let store = createStore(dummyApp, applyMiddleware(thunk));
 
-class RootContainerComponent extends Component {
+export default class App extends Component {
 
   render() {
     return (
@@ -21,18 +19,5 @@ class RootContainerComponent extends Component {
         </header>
       </div>
     );
-  }
-}
-
-let RootContainer = (RootContainerComponent);
-
-
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <RootContainer />
-      </Provider>
-    )
   }
 }
