@@ -1,41 +1,38 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-
-import {secrets} from "../actions";
 
 class Greeting extends Component {
   state = {
     secret: "",
-    secretText: ""
+    input: ""
   }
 
   retrieveSecret = (e) => {
     e.preventDefault();
-    var that = this;
-    this.props.getSecret(this.state.secretText)
-    .then(function(x)
-    {
-    let newSecret = x.secrets.secret;
-    console.log(newSecret)
-    that.setState({secret: newSecret })
-    });
+    let headers = {"Content-Type": "application/json"};
+    let response = fetch("http://localhost:8000/?input=" + e, {headers, });
+    response.then(res => res.json())
+      .then(data =>
+        this.setState({
+          secret: data.secret
+        })
+      )
   }
 
   render() {
     return (
       <>
-      <div class="text-center">
-        <div class="card bg-dark">
-          <div class="card-header">
-            <strong>Hey there Project!</strong>
+      <div className="text-center">
+        <div className="card bg-dark">
+          <div className="card-header">
+            <strong>Welcome to the Project!</strong>
           </div>
-          <div class="card-body">
-            <p class="card-text">Click the button to reveal the secret</p>
+          <div className="card-body">
+            <p className="card-text">Click the button to reveal the secret</p>
             <form onSubmit={this.retrieveSecret}>
-              <input 
-                type="text" 
-                value={this.state.secretText} 
-                onChange={(e) => this.setState({ secretText: e.target.value }) } 
+              <input
+                type="text"
+                value={this.state.input}
+                onChange={(e) => this.setState({ input: e.target.value }) }
               />
               <input type="submit"/>
             </form>
@@ -48,18 +45,4 @@ class Greeting extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    secrets: state.secrets,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getSecret: (secretText) => {
-      return dispatch(secrets.fetchSecret(secretText));
-    },
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Greeting);
+export default Greeting;
