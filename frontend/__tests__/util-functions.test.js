@@ -1,12 +1,6 @@
 import { retrieveSecret } from '../src/util/secretRetriever.js';
 const fetch = require("node-fetch");
 
-describe('Addition', () => {
-  it('knows that 2 and 2 make 4', () => {
-    expect(2 + 2).toBe(4);
-  });
-});
-
 describe('Retrieve secret', () => {
   it('grabs secret from backend', () => {
     let input = "test_secret";
