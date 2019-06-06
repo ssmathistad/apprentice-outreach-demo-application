@@ -30,6 +30,7 @@ class Greeting extends Component {
             <p className="card-text">Click the button to reveal the secret</p>
             <form onSubmit={this.setSecret}>
               <input
+                id="userInput"
                 type="text"
                 value={this.state.input}
                 onChange={(e) => this.setState({ input: e.target.value }) }
