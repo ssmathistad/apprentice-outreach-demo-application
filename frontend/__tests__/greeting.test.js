@@ -1,9 +1,12 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import Enzyme from 'enzyme';
 import Greeting from '../src/components/Greeting';
 
+Enzyme.configure({adapter: new Adapter()});
+
 test('Submit button grabs secret from backend', () => {
-  const wrapper = mount(
+  const wrapper = Enzyme.mount(
     <Greeting />
   );
 
