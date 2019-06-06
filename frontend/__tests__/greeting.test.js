@@ -37,9 +37,15 @@ test('Submit button grabs secret from backend', () => {
   wrapper.setState({input: "anything"});
 
   // Simulate submit button click
-  const btn = wrapper.find('#submitBtn');
-  btn.simulate('click');
+  const btn = wrapper.find('form');
+  const pr = btn.simulate('submit');
+  console.log(pr);
 
-  const result = wrapper.find('#decryptedResult')
-  expect(result).not.toBe("");
+  // jest.runAllTimers();
+
+  const result = wrapper.find('#decryptedResult');
+  console.log('result: ' + result.text());
+  console.log('secret: ' + wrapper.state('secret'));
+  console.log('input: ' + wrapper.state('input'));
+  expect(result.text()).not.toBe("");
 });

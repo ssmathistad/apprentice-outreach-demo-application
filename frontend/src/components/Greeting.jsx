@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {retrieveSecret} from '../util/secretRetriever';
+import { retrieveSecret } from '../util/secretRetriever';
 
 class Greeting extends Component {
   state = {
@@ -10,12 +10,16 @@ class Greeting extends Component {
 
   setSecret = (e) => {
     e.preventDefault();
-    retrieveSecret(this.state.input)
-      .then(data =>
+    console.log("state_input: " + this.state.input);
+    let r = retrieveSecret(this.state.input);
+    console.log(r);
+
+    r.then(data => {
+        console.log("state_secret: " + data.secret);
         this.setState({
           secret: data.secret
         })
-      );
+      });
   }
 
   render() {
