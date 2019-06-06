@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './App.css';
 import Greeting from './components/Greeting';
 
 export default class App extends Component {
