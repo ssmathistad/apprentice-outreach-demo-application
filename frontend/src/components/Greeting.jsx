@@ -3,19 +3,20 @@ import React, { Component } from 'react';
 import { retrieveSecret } from '../util/secretRetriever';
 
 class Greeting extends Component {
+  constructor(...args) {
+    super(...args);
+    this.setSecret = this.setSecret.bind(this);
+  }
+
   state = {
     secret: "",
     input: ""
   }
 
-  setSecret = (e) => {
+  setSecret(e) {
     e.preventDefault();
-    console.log("state_input: " + this.state.input);
-    let r = retrieveSecret(this.state.input);
-    console.log(r);
-
-    r.then(data => {
-        console.log("state_secret: " + data.secret);
+    retrieveSecret(this.state.input)
+      .then(data => {
         this.setState({
           secret: data.secret
         })
