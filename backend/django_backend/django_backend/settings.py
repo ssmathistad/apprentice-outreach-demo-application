@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['backend-demo-app', 'localhost', "backend"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
