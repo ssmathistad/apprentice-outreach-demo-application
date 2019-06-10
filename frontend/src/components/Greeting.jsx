@@ -29,8 +29,10 @@ class Greeting extends Component {
       })
       .catch(err =>
       {
-        console.log(err);
-        return
+        if(err.name === "AbortError") {
+          return;
+        }
+        throw err;
       });
   }
 
