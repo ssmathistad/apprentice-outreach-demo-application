@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { retrieveSecret } from '../util/secretRetriever';
 
 class Greeting extends Component {
+  abortController = new AbortController();
+
   constructor(...args) {
     super(...args);
     this.setSecret = this.setSecret.bind(this);
@@ -13,13 +15,22 @@ class Greeting extends Component {
     input: ""
   }
 
+  componentWillUnmount() {
+    this.abortController.abort();
+  }
+
   setSecret(e) {
     e.preventDefault();
-    retrieveSecret(this.state.input)
+    retrieveSecret(this.state.input, this.abortController.signal)
       .then(data => {
         this.setState({
           secret: data.secret
-        })
+        });
+      })
+      .catch(err =>
+      {
+        console.log(err);
+        return
       });
   }
 
