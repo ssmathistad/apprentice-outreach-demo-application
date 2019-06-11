@@ -25,8 +25,7 @@ SECRET_KEY = '$zve*j_1^zu%brw8jon+@m(3bopp03fmpy2z9@tx8v7b=4b#3%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backend-demo-app', 'localhost']
-
+ALLOWED_HOSTS = ['backend-demo-app', 'localhost', "backend"]
 
 # Application definition
 

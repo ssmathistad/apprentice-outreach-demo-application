@@ -29,6 +29,7 @@ test('Text box accepts input from user', () => {
   expect(textBox).not.toBe("");
 });
 
+
 test('Submit button grabs secret from backend', () => {
   var spy = jest.spyOn(Greeting.prototype, 'setSecret');
   const wrapper = Enzyme.mount(
@@ -37,4 +38,6 @@ test('Submit button grabs secret from backend', () => {
 
   wrapper.find('form').simulate('submit');
   expect(spy).toHaveBeenCalled();
+  wrapper.unmount();
 });
+
