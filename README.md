@@ -18,7 +18,7 @@ allows us to stand up our applications in a containerized environment while
 `docker-compose` lets us orchestrate multiple containers in one file.
 
 ### Steps
-Clone the repo and move into project
+Clone your fork of the repo and move into project
 ```
 $ git clone https://github.com/[USERNAME]/apprentice-outreach-demo-application.git
 $ cd apprentice-outreach-demo-application
