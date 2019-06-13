@@ -13,7 +13,7 @@ in the project with a basic understanding of programming concepts.
 
 ## Running the project
 This project using [Docker](https://docs.docker.com/get-started/) and
-[docker-compose]([docker-compose://docs.docker.com/compose/overview/). Docker
+[docker-compose](https://docs.docker.com/compose/overview/). Docker
 allows us to stand up our applications in a containerized environment while 
 `docker-compose` lets us orchestrate multiple containers in one file.
 
