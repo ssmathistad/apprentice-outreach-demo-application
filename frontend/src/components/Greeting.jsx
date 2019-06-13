@@ -46,12 +46,12 @@ class Greeting extends Component {
           </div>
           <div className="card-body">
             <p className="card-text">Click the button to reveal the secret</p>
-            <form onSubmit={this.getSecret}>
+            <form onSubmit={this.setSecret}>
               <input
                 id="userInput"
                 type="text"
                 value={this.state.input}
-                onChange={(e) => this.setState({ inpUt: e.target.value }) }
+                onChange={(e) => this.setState({ input: e.target.value }) }
               />
               <input id="submitBtn" type="submit"/>
             </form>
